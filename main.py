@@ -9,7 +9,7 @@ def table_constructor(_country_list):
         _cpi = list_avg(cpi(data_weekly_costs.get(_country), data_weekly_installs.get(_country)))
 
         _final_table[_country, 'Cost per Install'] = list_avg(_lvt)
-        _final_table[_country, 'LVT'] = list_avg(_lvt)
+        _final_table[_country, 'LTV'] = list_avg(_lvt)
         _final_table[_country, 'ROI'] = list_avg(_roi)
     return _final_table
 
@@ -44,5 +44,4 @@ data_weekly_installs = pd.read_csv('res/Weekly Installs.csv', ',')
 data_weekly_costs = pd.read_csv('res/Weekly Costs.csv', ',')
 country_list = list(data_weekly_revenue.columns.values)
 country_list.remove('Week')
-
-print(table_constructor(country_list))
+final_table = table_constructor(country_list)
